@@ -1,6 +1,8 @@
 var mysql = require("mysql");
 var inquirer = require("inquirer");
+var count = 0
 
+var connect = function(){
 var connection = mysql.createConnection({
   host: "localhost",
   port: 3306,
@@ -13,25 +15,35 @@ var connection = mysql.createConnection({
   database: "bamazon"
 });
 
+
+
+
 connection.connect(function(err) {
   if (err) throw err;
-  console.log("connected as id " + connection.threadId);
+  
 
  	connection.query("SELECT * FROM products", function(err, res){
  		if(err) throw(res);
- 		else{
+ 		
  			for(var i = 0; i<res.length; i++){
+ 				console.log("==================")
  				console.log("\nItem Id: " + res[i].item_id  + "\nProduct: " + res[i].product_name + "\nPrice: " +  res[i].price);
 
  			}
- 		}
+ 	
  
 
 	 	inquirer.prompt([
 	 			{
 	 				type: "input",
 	 				message: "Which item would you like to buy? Please enter the item id number",
-	 				name: "itemNum"
+	 				name: "itemNum",
+	 				validate: function(value) {
+          if (isNaN(value) === false) {
+            return true;
+          }
+          return false;
+        }
 
 	 			},
 
@@ -45,8 +57,6 @@ connection.connect(function(err) {
 
 	 				if(result.quantity < res[i].stock_quantity){
 	 					var itemPrice = res[i].price;
-	 					console.log(res[i].stock_quantity)
-	 					console.log(result.quantity)
 	 					var numLeft = (res[i].stock_quantity - result.quantity)
 			 	
 			 		
@@ -70,7 +80,9 @@ connection.connect(function(err) {
  					
  						
  						console.log("====================")
- 						console.log("Your total is: " + (itemPrice * result.quantity));
+ 						var price = itemPrice * result.quantity
+ 						var totalPrice = price.toFixed(2);
+ 						console.log("Your total is: " + totalPrice);
  						}
 	 				
  					else{
@@ -78,20 +90,30 @@ connection.connect(function(err) {
 						console.log("Insufficinet quantity. Your order did not go through.");
 	 				}
 
-	 				// inquirer.prompt([
-	 				// 		{
-	 				// 			type: "confirm",
-	 				// 			message: "Would you like to buy another item?",
-	 				// 			name: "confirm"
-	 				// 		}
-
-	 						
-	 					])
+	 		
+				inquirer.prompt([
+				{
+					type: "confirm",
+					message: "Would you like to buy something else?",
+					name: "confirm",
+					default: true
+				}
+			]).then(function(response){
+				if(response.confirm){
+					connect();
+				}
+				else{
+					console.log("bye")
+					process.exit(-1);
+				}
+			})
 	 				
 	 			});
 	 	});
  });
-	 		
+	}
+
+connect(); 		
  		
 
 
