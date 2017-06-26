@@ -1,13 +1,13 @@
 # Bamazon
 
-![Bamazon Customer] 
+Bamazon Customer
 (http://imgur.com/M4ILcqi)
 
-![Bamazon Manager View Products and View Inventory]
+Bamazon Manager View Products and View Inventory
 (http://imgur.com/A7Rtpow)
 
-![Bamazon Manager Add Inventory]
+Bamazon Manager Add Inventory
 (http://imgur.com/xvAKcAJ
 
-![Bamazon Manager Add new Product]
+Bamazon Manager Add new Product
 (http://imgur.com/3O1PDjy)
