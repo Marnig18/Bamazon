@@ -21,5 +21,5 @@ VALUES("iPhone 6 case", "Electronics", 6.99, 45),
 		("Tide PODS", "Grocery", 16.89, 30),
 		("Keychain", "Home Goods", 2.39, 4),
 		("TOMs Womens Classic","Clothing", 48.00, 10),
-		("Frencch Coffee Press", "Home Goods", 25.99, 35),
+		("French Coffee Press", "Home Goods", 25.99, 35),
 		("Wall Clock", "Home Goods", 86.99, 5)
