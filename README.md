@@ -10,7 +10,7 @@ The "manager" side of the application has three different functions. The first a
 ![Bamazon Manager View Products and View Inventory](http://imgur.com/A7Rtpow)
 
 The second function allows the "manager" to add inventory to the products in the database.
-![Bamazon Manager Add Inventory](/xvAKcAj-Imgur.gif)
+![Bamazon Manager Add Inventory](/xvAKcAJ-Imgur.gif)
 
 The last function allows the "manager" to add new produts to the database.
 ![Bamazon Manager Add new Product](http://imgur.com/3O1PDjy)
